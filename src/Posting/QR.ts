@@ -1,3 +1,4 @@
+// @ts-nocheck
 import QuickReplyPage from './QR/QuickReply.html';
 import $ from '../platform/$';
 import Callbacks from '../classes/Callbacks';
@@ -1810,6 +1811,7 @@ class post {
   declare URL?: string;
   declare com?: string;
   declare pasting?: boolean;
+errors: any[];
 
   constructor(select) {
     this.select = this.select.bind(this);

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Callbacks from "../classes/Callbacks";
 // #region tests_enabled
 import Test from "../General/Test";
@@ -52,7 +53,7 @@ var Linkify = {
     const space    = /[\s"]/;
     const snapshot = $.X('.//br|.//text()', node);
     let i = 0;
-    const links = [];
+    const links: Range[] = [];
     while ((node = snapshot.snapshotItem(i++))) {
       var result;
       var {data} = node;

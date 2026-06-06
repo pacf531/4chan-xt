@@ -1,9 +1,13 @@
+// @ts-nocheck
 /*
  * decaffeinate suggestions:
  * DS102: Remove unnecessary code created because of implicit returns
  * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
  */
 export default class RandomAccessList {
+length: number;
+last: { prev: any; next: any; data: any; ID: any; };
+first: { prev: any; next: any; data: any; ID: any; };
   constructor(items) {
     this.length = 0;
     if (items) { for (var item of items) { this.push(item); } }

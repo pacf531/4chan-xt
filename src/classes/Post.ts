@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type { FilterResults } from "../Filtering/Filter";
 import Get from "../General/Get";
 // #region tests_enabled

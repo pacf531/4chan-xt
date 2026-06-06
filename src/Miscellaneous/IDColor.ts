@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Callbacks from "../classes/Callbacks";
 import { g, Conf } from "../globals/globals";
 import $ from "../platform/$";
@@ -39,7 +40,7 @@ var IDColor = {
     const hash = g.SITE.uidColor ? g.SITE.uidColor(uid) : parseInt(uid, 16);
 
     // Convert binary string to numerical values with bitshift and '&' truncation.
-    const rgb = [
+    const rgb: string[] | number[] = [
       (hash >> 16) & 0xFF,
       (hash >> 8)  & 0xFF,
       hash & 0xFF

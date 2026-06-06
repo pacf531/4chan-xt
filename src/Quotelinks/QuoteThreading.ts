@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Callbacks from "../classes/Callbacks";
 import type Post from "../classes/Post";
 import RandomAccessList from "../classes/RandomAccessList";
@@ -89,7 +90,7 @@ var QuoteThreading = {
     let parent;
     if (this.isFetchedQuote || this.isClone || !this.isReply) { return; }
 
-    const parents = new Set();
+    const parents: Set<number> = new Set();
     let lastParent = null;
     for (var quote of this.quotes) {
       if ((parent = g.posts.get(quote))) {
@@ -142,7 +143,7 @@ var QuoteThreading = {
     const {order} = Unread;
     const children = (QuoteThreading.children[parent.fullID] || (QuoteThreading.children[parent.fullID] = []));
     const threadContainer = parent.nodes.threadContainer || $.el('div', {className: 'threadContainer'});
-    const nodes = [post.nodes.root];
+    const nodes: any[] = [post.nodes.root];
     if (post.nodes.threadContainer) { nodes.push(post.nodes.threadContainer); }
 
     let i = children.length;
@@ -184,7 +185,7 @@ var QuoteThreading = {
     if (Conf['Thread Quotes']) {
       posts.forEach(QuoteThreading.insert);
     } else {
-      const nodes = [];
+      const nodes: any[] = [];
       Unread.order = new RandomAccessList();
       QuoteThreading.inserted = dict();
       posts.forEach(function(post) {

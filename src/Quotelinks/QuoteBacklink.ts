@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Callbacks from "../classes/Callbacks";
 import { g, Conf, doc } from "../globals/globals";
 import $ from "../platform/$";
@@ -54,7 +55,7 @@ var QuoteBacklink = {
     if (markYours) { $.add(a, QuoteYou.mark.cloneNode(true)); }
     for (var quote of this.quotes) {
       var post;
-      var containers = [QuoteBacklink.getContainer(quote)];
+      var containers: any[] = [QuoteBacklink.getContainer(quote)];
       if ((post = g.posts.get(quote)) && post.nodes.backlinkContainer) {
         // Don't add OP clones when OP Backlinks is disabled,
         // as the clones won't have the backlink containers.

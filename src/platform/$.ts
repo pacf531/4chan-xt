@@ -1,3 +1,4 @@
+// @ts-nocheck
 /*
  * decaffeinate suggestions:
  * DS102: Remove unnecessary code created because of implicit returns
@@ -377,7 +378,7 @@ $.debounce = function(wait, fn) {
 };
 
 $.queueTask = (function() {
-  const taskQueue = [];
+  const taskQueue: IArguments[] = [];
   const execTask = function() {
     const [func, ...args] = taskQueue.shift();
     func(...args);
@@ -630,7 +631,7 @@ if (platform === 'crx') {
           setSync();
         } else {
           chrome.storage.local.remove(((() => {
-            const result = [];
+            const result: string[] = [];
             for (key in data) {
               if (!(key in items.local)) {
                 result.push(key);
@@ -679,7 +680,7 @@ if (platform === 'crx') {
     $.syncChannel = new BroadcastChannel(g.NAMESPACE + 'sync');
 
     $.on($.syncChannel, 'message', e => (() => {
-      const result = [];
+      const result: any[] = [];
       for (var key in e.data) {
         var cb;
         var val = e.data[key];
@@ -723,7 +724,7 @@ if (platform === 'crx') {
     $.set = $.oneItemSugar(function(items, cb) {
       $.securityCheck(items);
       return Promise.all((() => {
-        const result = [];
+        const result: Promise<void>[] = [];
         for (var key in items) {
           var val = items[key];
           result.push(GM.setValue(g.NAMESPACE + key, JSON.stringify(val)));
@@ -743,7 +744,7 @@ if (platform === 'crx') {
     } else if ($.hasStorage) {
       $.getValue = key => localStorage.getItem(key);
       $.listValues = () => (() => {
-        const result = [];
+        const result: string[] = [];
         for (var key in localStorage) {
           if (key.slice(0, g.NAMESPACE.length) === g.NAMESPACE) {
             result.push(key);

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import QR from "../Posting/QR";
 import $ from "./$";
 import { dict, platform } from "./helpers";
@@ -109,6 +110,7 @@ var CrossOrigin = {
 
   Request: (function() {
     const Request = class Request {
+responseHeaders: any;
       static initClass() {
         this.prototype.status = 0;
         this.prototype.statusText = '';

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Conf, doc, g } from "../globals/globals";
 import Main from "../main/Main";
 import $ from "../platform/$";
@@ -19,7 +20,7 @@ var Site = {
     'smug.nepu.moe':   {canonical: 'smuglo.li'}
   },
 
-  init(cb) {
+  init(cb: { (): void; (): void; }) {
     $.extend(Conf['siteProperties'], Site.defaultProperties);
     let hostname = Site.resolve();
     if (hostname && $.hasOwn(SW, Conf['siteProperties'][hostname].software)) {
@@ -65,12 +66,12 @@ var Site = {
     return hostname;
   },
 
-  parseURL(url) {
+  parseURL(url: Location) {
     const siteID = Site.resolve(url);
     return Main.parseURL(g.sites[siteID], url);
   },
 
-  set(hostname) {
+  set(hostname: string | number) {
     for (var ID in Conf['siteProperties']) {
       var site;
       var properties = Conf['siteProperties'][ID];

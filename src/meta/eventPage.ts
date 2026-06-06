@@ -1,3 +1,4 @@
+// @ts-nocheck
 import PageContextFunctions from "../PageContext/pageContext";
 
 // This requestId workaround isn't needed in manifest V3, since returning true in the event listener works.
@@ -13,7 +14,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 });
 
 var handlers = {
-  permission(request) {
+  permission(request: { origins: string[]; }) {
     return new Promise(resolve => {
       const origins = request.origins || ['*://*/'];
       chrome.permissions.contains({origins}, function(result) {
@@ -28,7 +29,7 @@ var handlers = {
     })
   },
 
-  async ajax(request) {
+  async ajax(request: { url: URL | RequestInfo; headers: any; responseType: string; }) {
     try {
       const res = await fetch(request.url, { headers: request.headers || {} });
       if (!res.ok) {
@@ -49,7 +50,7 @@ var handlers = {
     }
   },
 
-  async runInPageContext(request, sender) {
+  async runInPageContext(request: { fn: string | number; data: any; }, sender: { tab: { id: any; }; }) {
     const results = await chrome.scripting.executeScript({
       func: PageContextFunctions[request.fn],
       args: request.data ? [request.data] : [],

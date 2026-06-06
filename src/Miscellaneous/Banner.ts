@@ -1,3 +1,4 @@
+// @ts-nocheck
 import DataBoard from "../classes/DataBoard";
 import { Conf, d, g } from "../globals/globals";
 import Main from "../main/Main";

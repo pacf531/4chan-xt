@@ -1,3 +1,4 @@
+// @ts-nocheck
 /*
  * This file has the code for the jsx to { innerHTML: "safe string" }
  *

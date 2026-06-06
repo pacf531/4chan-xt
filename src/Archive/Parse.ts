@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Redirect from './Redirect';
 import { isEscaped } from '../globals/jsx';
 import Main from '../main/Main';

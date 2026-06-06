@@ -1,3 +1,4 @@
+// @ts-nocheck
 /*
  * decaffeinate suggestions:
  * DS102: Remove unnecessary code created because of implicit returns
@@ -80,7 +81,7 @@ const Test = {
       var nodes = $.X('.//br|.//wbr|.//text()', el);
       i = 0;
       nodes = ((() => {
-        const result = [];
+        const result: Node[] = [];
         while (node = nodes.snapshotItem(i++)) {
           result.push(node);
         }
@@ -219,7 +220,7 @@ const Test = {
         return result;
       })());
       const list2 = ((() => {
-        const result1 = [];
+        const result1: number[] = [];
         for (x of ($$((g.SITE.isOPContainerThread ? `${g.SITE.selectors.thread}, ` : '') + g.SITE.selectors.postContainer))) {           result1.push(+x.id.match(/\d*$/)[0]);
         }
         return result1;

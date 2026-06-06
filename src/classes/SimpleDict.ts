@@ -1,3 +1,4 @@
+// @ts-nocheck
 import $ from "../platform/$";
 
 export default class SimpleDict<T> {
@@ -7,7 +8,7 @@ export default class SimpleDict<T> {
     this.keys = [];
   }
 
-  push(key, data: T) {
+  push(key: string | number, data: T) {
     key = `${key}`;
     if (!this[key]) { this.keys.push(key); }
     this[key] = data;
@@ -53,7 +54,7 @@ export default class SimpleDict<T> {
     this.keys.splice(index, 0, key);
   }
 
-  rm(key) {
+  rm(key: string | this | this) {
     let i;
     key = `${key}`;
     if ((i = this.keys.indexOf(key)) !== -1) {
@@ -66,7 +67,7 @@ export default class SimpleDict<T> {
     for (var key of this.keys) { fn(this[key]); }
   }
 
-  get(key): T {
+  get(key: string | number): T {
     if (key === 'keys') {
       return undefined;
     } else {

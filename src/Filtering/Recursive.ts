@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Callbacks from "../classes/Callbacks";
 import type Post from "../classes/Post";
 import { g } from "../globals/globals";

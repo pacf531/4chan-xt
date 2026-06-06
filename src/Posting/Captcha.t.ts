@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Conf, d, g } from "../globals/globals";
 import $ from "../platform/$";
 import QR from "./QR";

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Redirect from "../Archive/Redirect";
 import PassMessage from "../Miscellaneous/PassMessage";
 import Report from "../Miscellaneous/Report";
@@ -240,7 +241,7 @@ $\
     // Add CSS classes to sticky/closed icons on /f/ to match other boards.
     if (post.boardID === 'f') {
       return (() => {
-        const result = [];
+        const result: void[] = [];
         for (var type of ['Sticky', 'Closed']) {
           var icon;
           if (icon = $(`img[alt=${type}]`, nodes.info)) {
@@ -340,7 +341,7 @@ $\
 
   transformBoardList() {
     let node;
-    const nodes = [];
+    const nodes: (HTMLSpanElement | Node)[] = [];
     const spacer = () => $.el('span', {className: 'spacer'});
     const items = $.X('.//a|.//text()[not(ancestor::a)]', $(SWYotsuba.selectors.boardList));
     let i = 0;

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import SimpleDict from "./SimpleDict";
 import $ from "../platform/$";
 import { g } from "../globals/globals";

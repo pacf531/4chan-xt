@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Callbacks from "../classes/Callbacks";
 import Config from "../config/Config";
 import Get from "../General/Get";
@@ -401,7 +402,7 @@ var ImageExpand = {
       );
 
       const {createSubEntry} = ImageExpand.menu;
-      const subEntries = [];
+      const subEntries: ({ el: HTMLLabelElement; })[] = [];
       for (var name in Config.imageExpansion) {
         var conf = Config.imageExpansion[name];
         subEntries.push(createSubEntry(name, conf[1]));

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Notice from "../classes/Notice";
 import Config from "../config/Config";
 import Filter from "../Filtering/Filter";

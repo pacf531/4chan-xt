@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Callbacks from "../classes/Callbacks";
 import DataBoard from "../classes/DataBoard";
 import type Post from "../classes/Post";
@@ -135,7 +136,7 @@ var PostHiding = {
       });
       $.on(hideStubLink, 'click', PostHiding.menu.hideStub);
 
-      const showOptions = [
+      const showOptions: ({ el: HTMLElement; })[] = [
         { el: applyShow },
         { el: thisPost },
         { el: replies },

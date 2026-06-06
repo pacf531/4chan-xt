@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Conf, d, doc } from "../globals/globals";
 import Main from "../main/Main";
 import $ from "../platform/$";
@@ -35,6 +36,9 @@ var Menu = (function() {
   let currentMenu = undefined;
   let lastToggledButton = undefined;
   Menu = class Menu {
+type: any;
+entries: any[];
+menu: HTMLDivElement;
     static initClass() {
       currentMenu       = null;
       lastToggledButton = null;

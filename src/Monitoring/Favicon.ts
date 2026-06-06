@@ -1,3 +1,4 @@
+// @ts-nocheck
 import ferongr_unreadDead from './Favicon/ferongr.unreadDead.png';
 import ferongr_unreadDeadY from './Favicon/ferongr.unreadDeadY.png';
 import ferongr_unreadSFW from './Favicon/ferongr.unreadSFW.png';

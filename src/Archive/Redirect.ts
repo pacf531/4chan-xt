@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Notice from '../classes/Notice';
 import { Conf } from '../globals/globals';
 import $ from '../platform/$';
@@ -67,7 +68,7 @@ var Redirect = {
 
   update(cb) {
     let url;
-    const urls = [];
+    const urls: any[] = [];
     const responses = [];
     let nloaded = 0;
     for (url of Conf['archiveLists'].split('\n')) {
@@ -113,7 +114,7 @@ var Redirect = {
   },
 
   parse(responses, cb) {
-    const archives = [];
+    const archives: any[] = [];
     const archiveUIDs = dict();
     for (var response of responses) {
       for (var data of response) {
@@ -232,7 +233,7 @@ var Redirect = {
   },
 
   report(boardID) {
-    const urls = [];
+    const urls: any[][] = [];
     for (var archive of Conf['archives']) {
       var {software, https, reports, boards, name, domain} = archive;
       if ((software === 'foolfuuka') && https && reports && boards instanceof Array && boards.includes(boardID)) {

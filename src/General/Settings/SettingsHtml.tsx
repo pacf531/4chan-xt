@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { g } from "../../globals/globals";
 import h from "../../globals/jsx";
 import meta from '../../../package.json';

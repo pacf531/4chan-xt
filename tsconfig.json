@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "module": "ES2022",
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "removeComments": false,
     "sourceMap": true,
     "target": "ES2020",
@@ -39,6 +39,8 @@
     "builds/",
     "src/meta/fbegin.js",
     "src/meta/fend.js",
-    "src/meta/newline.js"
+    "src/meta/newline.js",
+    "src/meta/metadata.ts",
+    "src/meta/manifestJson.ts"
   ]
 }

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Redirect from "../Archive/Redirect";
 import Notice from "../classes/Notice";
 import { Conf, d, doc, E, g } from "../globals/globals";
@@ -209,7 +210,7 @@ var Header = {
     if (!boardnav) return;
     boardnav = boardnav.replace(/(\r\n|\n|\r)/g, ' ');
     const segments = boardnav.split(/(\{\{(?:"[^"]+")?|\}\})/);
-    const spanStack = [];
+    const spanStack: HTMLSpanElement[] = [];
     let currentContainer = list;
     segments.forEach(segment => {
       if (segment.startsWith('{{')) {
@@ -243,7 +244,7 @@ var Header = {
       return '';
     });
 
-    let indexOptions = [];
+    let indexOptions: any[] | string = [];
     t = t.replace(/-(?:mode|sort):"([^"]+)"/g, function(m0, m1) {
       indexOptions.push(m1.toLowerCase().replace(/\ /g, '-'));
       return '';

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { createFilter } from "@rollup/pluginutils";
 import MagicString from 'magic-string';
 

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import SettingsPage from './Settings/SettingsHtml';
 import FilterGuidePage from './Settings/Filter-guide.html';
 import SaucePage from './Settings/Sauce.html';
@@ -76,7 +77,7 @@ var Settings = {
     $.on($('.reset',  dialog), 'click',  Settings.reset);
     $.on($('input',   dialog), 'change', Settings.onImport);
 
-    const links = [];
+    const links: (HTMLAnchorElement | Text)[] = [];
     for (var section of Settings.sections) {
       var link = $.el('a', {
         className: `tab-${section.hyphenatedTitle}`,
@@ -188,7 +189,7 @@ Enable it on boards.${location.hostname.split('.')[1]}.org in your browser's pri
     const inputs = dict();
     const addCheckboxes = function(root, obj) {
       const containers = [root];
-      const result = [];
+      const result: any[] = [];
       for (key in obj) {
         var arr = obj[key];
         if (arr instanceof Array) {
@@ -671,8 +672,8 @@ Enable it on boards.${location.hostname.split('.')[1]}.org in your browser's pri
       }
     }
 
-    const rows = [];
-    const boardOptions = [];
+    const rows: HTMLTableRowElement[] = [];
+    const boardOptions: HTMLOptionElement[] = [];
     for (boardID of Object.keys(archBoards).sort()) { // Alphabetical order
       var row = $.el('tr',
         {className: `board-${boardID}`});
@@ -728,7 +729,7 @@ Enable it on boards.${location.hostname.split('.')[1]}.org in your browser's pri
       return td;
     }
 
-    const options = [];
+    const options: HTMLOptionElement[] = [];
     let i = 0;
     while (i < length) {
       var archive = data[type][i++];

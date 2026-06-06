@@ -1,3 +1,4 @@
+// @ts-nocheck
 /*
  * decaffeinate suggestions:
  * DS102: Remove unnecessary code created because of implicit returns
@@ -90,7 +91,7 @@ var Index = {
     Header.addShortcut('index-refresh', this.button, 590);
 
     // Header "Index Navigation" submenu
-    const entries = [];
+    const entries: ({ el: HTMLLabelElement; })[] = [];
     this.inputs = (inputs = dict());
     for (name in Config.Index) {
       var arr = Config.Index[name];
@@ -534,7 +535,7 @@ var Index = {
     const state =
       {replace: true};
     const commands = hash.slice(1).split('/');
-    const leftover = [];
+    const leftover: string[] = [];
     for (var command of commands) {
       var mode, sort;
       if (mode = $.getOwn(Index.hashCommands.mode, command)) {
@@ -674,7 +675,7 @@ var Index = {
     const pagesRoot = $('.pages', Index.pagelist);
     const maxPageNum = Index.getMaxPageNum();
     if (pagesRoot.childElementCount !== maxPageNum) {
-      const nodes = [];
+      const nodes: (Text | HTMLAnchorElement)[] = [];
       for (let i = 1, end = maxPageNum; i <= end; i++) {
         var a = $.el('a', {
           textContent: i,
@@ -887,9 +888,9 @@ var Index = {
 
   buildThreads(threadIDs, isCatalog, withReplies) {
     let errors;
-    const threads    = [];
-    const newThreads = [];
-    let newPosts   = [];
+    const threads: Thread[]    = [];
+    const newThreads: Thread[] = [];
+    let newPosts: Post[]   = [];
     for (var ID of threadIDs) {
       var opRoot, thread;
       try {
@@ -957,11 +958,11 @@ var Index = {
 
   buildReplies(threads) {
     let errors;
-    const posts = [];
+    const posts: Post[] = [];
     for (var thread of threads) {
       var lastReplies;
       if (!(lastReplies = Index.liveThreadDict[thread.ID].last_replies)) { continue; }
-      var nodes = [];
+      var nodes: any[] = [];
       for (var data of lastReplies) {
         var node, post;
         if ((post = thread.posts.get(data.no)) && !post.isFetchedQuote) {
@@ -989,7 +990,7 @@ var Index = {
   },
 
   buildCatalogViews(threads) {
-    const catalogThreads = [];
+    const catalogThreads: CatalogThread[] = [];
     for (var thread of threads) {
       if (!thread.catalogView) {
         var {ID} = thread;
@@ -1129,7 +1130,7 @@ var Index = {
 
   buildStructure(threadIDs) {
     const threads = Index.buildThreads(threadIDs, false, Conf['Show Replies']);
-    const nodes = [];
+    const nodes: (any | HTMLHRElement)[] = [];
     for (var thread of threads) {
       nodes.push(thread.nodes.root, $.el('hr'));
     }
@@ -1165,7 +1166,7 @@ var Index = {
     const threads = Index.buildThreads(threadIDs, true);
     Index.buildCatalogViews(threads);
     Index.sizeCatalogViews(threads);
-    const nodes = [];
+    const nodes: any[] = [];
     for (var thread of threads) {
       thread.OP.setCatalogOP(true);
       $.add(thread.catalogView.nodes.root, thread.OP.nodes.root);
@@ -1221,7 +1222,7 @@ var Index = {
   searchMatch(obj, keywords) {
     const {info, file} = obj;
     if (info.comment == null) { info.comment = g.SITE.Build.parseComment(info.commentHTML.innerHTML); }
-    let text = [];
+    let text: any[] | string = [];
     for (var key of ['comment', 'subject', 'name', 'tripcode']) {
       if (key in info) { text.push(info[key]); }
     }

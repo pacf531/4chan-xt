@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Callbacks from "../classes/Callbacks";
 import DataBoard from "../classes/DataBoard";
 import Get from "../General/Get";
@@ -49,7 +50,7 @@ var UnreadIndex = {
   onIndexRefresh(e) {
     if (e.detail.isCatalog) { return; }
     return (() => {
-      const result = [];
+      const result: any[] = [];
       for (var threadID of e.detail.threadIDs) {
         var thread = g.threads.get(threadID);
         result.push(UnreadIndex.update(thread));

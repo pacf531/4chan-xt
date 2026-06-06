@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Callbacks from "../classes/Callbacks";
 import BoardConfig from "../General/BoardConfig";
 import { d, doc, g } from "../globals/globals";

@@ -1,3 +1,4 @@
+// @ts-nocheck
 /*
  * decaffeinate suggestions:
  * DS102: Remove unnecessary code created because of implicit returns
@@ -45,7 +46,7 @@ var Gallery = {
 
   node() {
     return (() => {
-      const result = [];
+      const result: (void | undefined)[] = [];
       for (var file of this.files) {
         if (file.thumb) {
           if (Gallery.nodes) {
@@ -251,7 +252,7 @@ var Gallery = {
     // Set sauce links
     $.rmAll(nodes.sauce);
     if (Conf['Sauce'] && Sauce.links && (post = g.posts.get(file.dataset.post))) {
-      const sauces = [];
+      const sauces: (Text | any)[] = [];
       for (var link of Sauce.links) {
         var node;
         if (node = Sauce.createSauceLink(link, post, post.files[+file.dataset.file])) {

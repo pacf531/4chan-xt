@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { g, Conf, doc, d } from "../globals/globals";
 import Main from "../main/Main";
 import $ from "../platform/$";

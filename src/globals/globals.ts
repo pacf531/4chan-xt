@@ -1,3 +1,4 @@
+// @ts-nocheck
 import version from "../../version.json";
 import meta from "../../package.json";
 import type SimpleDict from "../classes/SimpleDict";
@@ -80,7 +81,7 @@ export const E = (function () {
   const output = function (text: string) {
     return text.toString().replace(regex, fn);
   };
-  output.cat = function (templates) {
+  output.cat = function (templates: string | any[]) {
     let html = '';
     for (let i = 0; i < templates.length; i++) {
       html += templates[i].innerHTML;

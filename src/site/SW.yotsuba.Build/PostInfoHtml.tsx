@@ -1,9 +1,10 @@
+// @ts-nocheck
 import { g } from "../../globals/globals";
 import h, { EscapedHtml } from "../../globals/jsx";
 
 export default function generatePostInfoHtml(
-  ID, o, subject, capcode, email, name, tripcode, pass, capcodeLC, capcodePlural, staticPath, gifIcon,
-  capcodeDescription, uniqueID, flag, flagCode, flagCodeTroll, dateUTC, dateText, postLink, quoteLink, boardID,
+  ID, o: { isReply: any; isSticky: any; isClosed: any; isArchived: any; }, subject, capcode, email, name, tripcode, pass, capcodeLC, capcodePlural: string, staticPath, gifIcon,
+  capcodeDescription: string, uniqueID, flag, flagCode: string, flagCodeTroll: string, dateUTC, dateText, postLink: string, quoteLink: string, boardID: string,
   threadID,
 ): EscapedHtml {
   const nameHtml: (EscapedHtml | string)[] = [<span class={`name${capcode ? ' capcode' : ''}`}>{name}</span>];

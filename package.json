@@ -103,7 +103,8 @@
     "rollup": "^4.27.3",
     "rollup-plugin-cleanup": "^3.2.1",
     "tslib": "^2.8.1",
-    "typescript": "^5.6.3"
+    "typescript": "^5.6.3",
+    "typestat": "^0.8.18"
   },
   "repository": {
     "type": "git",
@@ -126,13 +127,13 @@
   },
   "type": "module",
   "scripts": {
-    "build": "node ./tools/rollup",
-    "build:min": "node ./tools/rollup -min -platform=userscript",
-    "build:userscript": "node ./tools/rollup -platform=userscript",
-    "build:crx": "node ./tools/rollup -platform=crx",
-    "build:userscript:min": "node ./tools/rollup -min -platform=userscript",
-    "build:crx:min": "node ./tools/rollup -min -platform=crx",
-    "build:all": "node ./tools/rollup -min -platform=userscript && node ./tools/rollup -platform=userscript && node ./tools/rollup -platform=crx",
+    "build": "node ./tools/rollup.ts",
+    "build:min": "node ./tools/rollup.ts -min -platform=userscript",
+    "build:userscript": "node ./tools/rollup.ts -platform=userscript",
+    "build:crx": "node ./tools/rollup.ts -platform=crx",
+    "build:userscript:min": "node ./tools/rollup.ts -min -platform=userscript",
+    "build:crx:min": "node ./tools/rollup.ts -min -platform=crx",
+    "build:all": "node ./tools/rollup.ts -min -platform=userscript && node ./tools/rollup.ts -platform=userscript && node ./tools/rollup.ts -platform=crx",
     "typecheck:app": "tsc --project tsconfig.json",
     "typecheck:tools": "tsc --project tools/tsconfig.json",
     "typecheck": "npm run typecheck:app && npm run typecheck:tools"

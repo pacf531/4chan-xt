@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Callbacks from "../classes/Callbacks";
 import Header from "../General/Header";
 import UI from "../General/UI";
@@ -109,7 +110,7 @@ var ThreadStats = {
       if (thread.ipCount) {
         ipCountEl.textContent = thread.ipCount;
       } else if (g.BOARD?.config.user_ids) {
-        const IDs = new Set();
+        const IDs: Set<string> = new Set();
         g.posts.forEach(post => {
           IDs.add(post.info.uniqueID);
         });

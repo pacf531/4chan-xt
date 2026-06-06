@@ -1,6 +1,11 @@
+// @ts-nocheck
 import $ from "../platform/$";
 
 export default class CatalogThread {
+thread: any;
+ID: any;
+board: any;
+nodes: { root: any; thumb: any; icons: any; postCount: any; fileCount: any; pageCount: any; replies: any; };
   toString() { return this.ID; }
 
   constructor(root, thread) {

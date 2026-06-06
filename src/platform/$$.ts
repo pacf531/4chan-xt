@@ -1,4 +1,4 @@
 import { d } from "../globals/globals";
 
-const $$ = (selector, root = d.body) => Array.from(root.querySelectorAll(selector));
+const $$ = (selector: string, root = d.body) => Array.from(root.querySelectorAll(selector));
 export default $$;

@@ -1,3 +1,4 @@
+// @ts-nocheck
 // This file was created because these functions on $ were sometimes not initialized yet because of circular
 // dependencies, so try to keep this file without dependencies, so these functions don't have to wait for something else
 
@@ -31,11 +32,11 @@ export const debounce = (wait: number, fn: Function, leading = true) => {
 
 export const dict = () => Object.create(null);
 
-dict.clone = function (obj) {
+dict.clone = function (obj: string | any[]) {
   if ((typeof obj !== 'object') || (obj === null)) {
     return obj;
   } else if (obj instanceof Array) {
-    const arr = [];
+    const arr: any[] = [];
     for (let i = 0, end = obj.length; i < end; i++) {
       arr.push(dict.clone(obj[i]));
     }

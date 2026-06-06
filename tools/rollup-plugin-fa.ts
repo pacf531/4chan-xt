@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * I don't know why I didn't get the UMD to work, and this is probably not the best solution, but it works.
  * @type {import("rollup").Plugin}

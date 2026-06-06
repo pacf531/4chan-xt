@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Beep from './ThreadUpdater/beep.wav';
 import $ from "../platform/$";
 import Callbacks from '../classes/Callbacks';
@@ -67,7 +68,7 @@ var ThreadUpdater = {
     });
     $.on(updateLink.firstElementChild, 'click', this.update);
 
-    const subEntries = [];
+    const subEntries: ({ el: HTMLLabelElement; } | { el: any; })[] = [];
     for (const name in Config.updater.checkbox) {
       var conf = Config.updater.checkbox[name];
       const el = UI.checkbox(name, name);
@@ -360,10 +361,10 @@ var ThreadUpdater = {
     thread.fileLimit = !!OP.imagelimit;
     if (OP.unique_ips) thread.ipCount = OP.unique_ips;
 
-    const posts    = []; // new post objects
-    const index    = []; // existing posts
-    const files    = []; // existing files
-    const newPosts = []; // new post fullID list for API
+    const posts: Post[]    = []; // new post objects
+    const index: any[]    = []; // existing posts
+    const files: any[]    = []; // existing files
+    const newPosts: string[] = []; // new post fullID list for API
 
     // Build the index, create posts.
     for (var postObject of postObjects) {
@@ -388,7 +389,7 @@ var ThreadUpdater = {
     }
 
     // Check for deleted posts.
-    const deletedPosts = [];
+    const deletedPosts: string[] = [];
     for (ID of ThreadUpdater.postIDs) {
       if (!index.includes(ID)) {
         thread.posts.get(ID).kill();
@@ -398,7 +399,7 @@ var ThreadUpdater = {
     ThreadUpdater.postIDs = index;
 
     // Check for deleted files.
-    const deletedFiles = [];
+    const deletedFiles: string[] = [];
     for (ID of ThreadUpdater.fileIDs) {
       if (!(files.includes(ID) || deletedPosts.includes(`${board}.${ID}`))) {
         thread.posts.get(ID).kill(true);

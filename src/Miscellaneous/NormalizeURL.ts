@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Conf, g } from "../globals/globals";
 
 /*

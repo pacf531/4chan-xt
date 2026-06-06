@@ -1,9 +1,17 @@
+// @ts-nocheck
 import { g } from "../globals/globals";
 import $ from "../platform/$";
 import Board from "./Board";
 import Thread from "./Thread";
 
 export default class CatalogThreadNative {
+nodes: { root: any; thumb: any; };
+siteID: any;
+boardID: any;
+board: import("/home/simonlui/Code_Repositories/Personal_Projects/4chan-xt/src/globals/globals").Board | Board;
+ID: number;
+threadID: number;
+thread: any;
   toString() { return this.ID; }
 
   constructor(root) {

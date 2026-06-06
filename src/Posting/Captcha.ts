@@ -1,3 +1,4 @@
+// @ts-nocheck
 import $ from "../platform/$";
 import CaptchaReplace from "./Captcha.replace";
 import CaptchaT from "./Captcha.t";

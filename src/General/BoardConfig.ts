@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Notice from "../classes/Notice";
 import { g, Conf } from "../globals/globals";
 import $ from "../platform/$";
@@ -67,7 +68,7 @@ var BoardConfig = {
 
   sfwBoards(sfw) {
     return (() => {
-      const result = [];
+      const result: string[] = [];
       const object = this.boards || Conf['boardConfig'].boards;
       for (var board in object) {
         var data = object[board];

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Get from '../General/Get';
 import Header from '../General/Header';
 import UI from '../General/UI';

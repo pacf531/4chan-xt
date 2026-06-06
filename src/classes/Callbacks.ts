@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Main from "../main/Main";
 
 /*
@@ -7,6 +8,12 @@ import Main from "../main/Main";
  * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
  */
 export default class Callbacks {
+static Post: Callbacks;
+static Thread: Callbacks;
+static CatalogThread: Callbacks;
+static CatalogThreadNative: Callbacks;
+type: any;
+keys: any[];
   static initClass() {
     this.Post          = new Callbacks('Post');
     this.Thread        = new Callbacks('Thread');

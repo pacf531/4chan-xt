@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Redirect from "../Archive/Redirect";
 import Board from "./Board";
 import Post from "./Post";

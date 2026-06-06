@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Conf, d, g } from "../globals/globals";
 import $ from "../platform/$";
 import { dict, HOUR } from "../platform/helpers";

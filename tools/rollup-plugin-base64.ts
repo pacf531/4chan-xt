@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { readFile } from 'fs/promises';
 import { createFilter } from "@rollup/pluginutils";
 

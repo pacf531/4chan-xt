@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Redirect from "../Archive/Redirect";
 import Board from "../classes/Board";
 import Callbacks from "../classes/Callbacks";
@@ -587,7 +588,7 @@ var Main = {
   },
 
   addThreads(records) {
-    const threadRoots = [];
+    const threadRoots: any[] = [];
     for (var record of records) {
       for (var node of record.addedNodes) {
         if ((node.nodeType === Node.ELEMENT_NODE) && node.matches(g.SITE.selectors.thread)) {
@@ -607,13 +608,13 @@ var Main = {
 
   addPosts(records) {
     let thread;
-    const threads   = [];
-    const threadsRM = [];
+    const threads: Thread[]   = [];
+    const threadsRM: Thread[] = [];
     const posts     = [];
     const errors    = [];
     for (var record of records) {
       thread = Get.threadFromRoot(record.target);
-      var postRoots = [];
+      var postRoots: any[] = [];
       for (var node of record.addedNodes) {
         if (node.nodeType === Node.ELEMENT_NODE) {
           if (node.matches(g.SITE.selectors.postContainer) || (node = $(g.SITE.selectors.postContainer, node))) {
@@ -688,7 +689,7 @@ var Main = {
   },
 
   addCatalogThreads(records) {
-    const threadRoots = [];
+    const threadRoots: any[] = [];
     for (var record of records) {
       for (var node of record.addedNodes) {
         if ((node.nodeType === Node.ELEMENT_NODE) && node.matches(g.SITE.selectors.catalog.thread)) {

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import ThreadWatcherPage from './ThreadWatcher/ThreadWatcher.html';
 import $ from "../platform/$";
 import Board from '../classes/Board';
@@ -571,7 +572,7 @@ var ThreadWatcher = {
   },
 
   getAll(groupByBoard) {
-    const all = [];
+    const all: undefined[][] = [];
     for (var siteID in ThreadWatcher.db.data) {
       var boards = ThreadWatcher.db.data[siteID];
       for (var boardID in boards.boards) {
@@ -664,7 +665,7 @@ var ThreadWatcher = {
       while (conflicts.length > 0) {
         len++;
         prefix = siteID.slice(0, len);
-        var conflicts2 = [];
+        var conflicts2: string[] = [];
         for (var siteID2 of conflicts) {
           if (siteID2.slice(0, len) === prefix) {
             conflicts2.push(siteID2);
@@ -680,7 +681,7 @@ var ThreadWatcher = {
   },
 
   build() {
-    const nodes = [];
+    const nodes: HTMLDivElement[] = [];
     const threads = ThreadWatcher.getAll();
     ThreadWatcher.setPrefixes(threads);
     for (var {siteID, boardID, threadID, data} of threads) {

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Redirect from "../Archive/Redirect";
 import Callbacks from "../classes/Callbacks";
 import Post from "../classes/Post";

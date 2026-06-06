@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Callbacks from "../classes/Callbacks";
 import Post from "../classes/Post";
 import Get from "../General/Get";
@@ -129,7 +130,7 @@ var ExpandThread = {
 
     g.SITE.Build.spoilerRange[thread.board] = req.response.posts[0].custom_spoiler;
 
-    const posts      = [];
+    const posts: Post[]      = [];
     const postsRoot  = [];
     let filesCount = 0;
     for (var postData of req.response.posts) {

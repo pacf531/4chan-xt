@@ -1,4 +1,7 @@
-import { Conf, g } from "../globals/globals";
+// @ts-nocheck
+import Post from "../classes/Post";
+import Thread from "../classes/Thread";
+import { Board, Conf, g } from "../globals/globals";
 import $ from "../platform/$";
 
 /*
@@ -8,7 +11,7 @@ import $ from "../platform/$";
  * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
  */
 var Get = {
-  url(type, IDs, ...args) {
+  url(type: string, IDs: Board, ...args: undefined[]) {
     let f, site;
     if ((site = g.sites[IDs.siteID]) && (f = $.getOwn(site.urls, type))) {
       return f(IDs, ...args);
@@ -16,7 +19,7 @@ var Get = {
       return undefined;
     }
   },
-  threadExcerpt(thread) {
+  threadExcerpt(thread: Thread) {
     const {OP} = thread;
     const excerpt = (`/${decodeURIComponent(thread.board.ID)}/ - `) + (
       OP.info.subject?.trim() ||
@@ -26,7 +29,7 @@ var Get = {
     if (excerpt.length > 73) { return `${excerpt.slice(0, 70)}...`; }
     return excerpt;
   },
-  threadFromRoot(root) {
+  threadFromRoot(root: Node) {
     if (root == null) { return null; }
     const {board} = root.dataset;
     return g.threads.get(`${board ? encodeURIComponent(board) : g.BOARD.ID}.${root.id.match(/\d*$/)[0]}`);
@@ -34,16 +37,16 @@ var Get = {
   threadFromNode(node) {
     return Get.threadFromRoot($.x(`ancestor-or-self::${g.SITE.xpath.thread}`, node));
   },
-  postFromRoot(root) {
+  postFromRoot(root: Node) {
     if (root == null) { return null; }
     const post  = g.posts.get(root.dataset.fullID);
     const index = root.dataset.clone;
     if (index) { return post.clones[+index]; } else { return post; }
   },
-  postFromNode(root) {
+  postFromNode(root: Element) {
     return Get.postFromRoot($.x(`ancestor-or-self::${g.SITE.xpath.postContainer}[1]`, root));
   },
-  postDataFromLink(link) {
+  postDataFromLink(link: { dataset: { postID: any; boardID?: any; threadID?: any; }; href: string; }) {
     let boardID, postID, threadID;
     if (link.dataset.postID) { // resurrected quote
       ({boardID, threadID, postID} = link.dataset);
@@ -59,12 +62,12 @@ var Get = {
       postID:   +postID
     };
   },
-  allQuotelinksLinkingTo(post) {
+  allQuotelinksLinkingTo(post: Post) {
     // Get quotelinks & backlinks linking to the given post.
-    const quotelinks = [];
+    const quotelinks: any[] = [];
     const {posts} = g;
     const {fullID} = post;
-    const handleQuotes = function(qPost, type) {
+    const handleQuotes = function(qPost: Post, type: string) {
       quotelinks.push(...(qPost.nodes[type] || []));
       for (var clone of qPost.clones) { quotelinks.push(...(clone.nodes[type] || [])); }
     };

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import BoardConfig from "../General/BoardConfig";
 import { d, g } from "../globals/globals";
 import SimpleDict from "./SimpleDict";

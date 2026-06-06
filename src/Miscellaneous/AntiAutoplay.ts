@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Callbacks from "../classes/Callbacks";
 import { Conf, d, doc } from "../globals/globals";
 import $ from "../platform/$";

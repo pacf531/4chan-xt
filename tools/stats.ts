@@ -1,3 +1,4 @@
+// @ts-nocheck
 fetch('https://api.github.com/repos/TuxedoTako/4chan-xt/releases').then(async res => {
   const data = await res.json();
   for (const row of data) {

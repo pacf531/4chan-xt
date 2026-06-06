@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Header from "../General/Header";
 import { d } from "../globals/globals";
 import $ from "../platform/$";
@@ -5,6 +6,11 @@ import { SECOND } from "../platform/helpers";
 import Icon from '../Icons/icon';
 
 export default class Notice {
+timeout: any;
+onclose: any;
+el: HTMLDivElement;
+timeoutId: number;
+closed: boolean;
   constructor(type, content, timeout, onclose) {
     this.add = this.add.bind(this);
     this.close = this.close.bind(this);

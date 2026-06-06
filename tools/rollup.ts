@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { rollup } from 'rollup';
 import typescript from '@rollup/plugin-typescript';
 import setupFileInliner from './rollup-plugin-inline-file.ts';

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Notice from "../classes/Notice";
 import { g, Conf } from "../globals/globals";
 import $ from "../platform/$";

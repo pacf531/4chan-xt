@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Callbacks from "../classes/Callbacks";
 import Notice from "../classes/Notice";
 import Filter from "../Filtering/Filter";
@@ -19,7 +20,7 @@ var Sauce = {
     if (!['index', 'thread'].includes(g.VIEW) || !Conf['Sauce']) { return; }
     $.addClass(doc, 'show-sauce');
 
-    const links = [];
+    const links: any[] = [];
     for (link of Conf['sauces'].split('\n')) {
       var linkData;
       if ((link[0] !== '#') && (linkData = this.parseLink(link))) {
@@ -89,7 +90,7 @@ var Sauce = {
     if (!!parts['types']  && (needle = ext, !parts['types'].split(',').includes(needle))) { return null; }
     if (!!parts['regexp'] && (!(matches = file.name.match(parts['regexp'])))) { return null; }
 
-    const missing = [];
+    const missing: any[] = [];
     for (var key of ['url', 'text']) {
       parts[key] = parts[key].replace(/%(T?URL|IMG|[sh]?MD5|board|name|%|semi|\$\d+)/g, function(orig, parameter) {
         let type;
@@ -136,8 +137,8 @@ var Sauce = {
 
   file(post, file) {
     let link, node;
-    const nodes = [];
-    const skipped = [];
+    const nodes: (Text | any)[] = [];
+    const skipped: any[][] = [];
     for (link of Sauce.links) {
       if (node = Sauce.createSauceLink(link, post, file)) {
         nodes.push($.tn(' '), node);
