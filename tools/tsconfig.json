@@ -8,6 +8,7 @@
       "@types/chrome",
       "node"
     ],
+    "allowImportingTsExtensions": true,
   },
   "include": [
     "./**/*"

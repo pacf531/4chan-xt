@@ -1,20 +1,20 @@
 import { rollup } from 'rollup';
 import typescript from '@rollup/plugin-typescript';
-import setupFileInliner from './rollup-plugin-inline-file.js';
-import faFix from './rollup-plugin-fa.js';
+import setupFileInliner from './rollup-plugin-inline-file.ts';
+import faFix from './rollup-plugin-fa.ts';
 import { dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
-import generateMetadata from '../src/meta/metadata.js';
+import generateMetadata from '../src/meta/metadata.ts';
 import { copyFile, readFile, writeFile } from 'fs/promises';
-import importBase64 from './rollup-plugin-base64.js';
-import generateManifestJson from '../src/meta/manifestJson.js';
+import importBase64 from './rollup-plugin-base64.ts';
+import generateManifestJson from '../src/meta/manifestJson.ts';
 import terser from '@rollup/plugin-terser';
-import fixTsOutputFormat from './fix-ts-output-format.js';
+import fixTsOutputFormat from './fix-ts-output-format.ts';
 import cleanup from 'rollup-plugin-cleanup';
 import alias from '@rollup/plugin-alias';
-import platformSpecific from './rollup-plugin-platform-specific.js';
-import removeDecaffeinateComments from './rollup-plugin-remove-decaffeinate-comments.js';
-import removeTestCode from './rollup-plugin-remove-test-code.js';
+import platformSpecific from './rollup-plugin-platform-specific.ts';
+import removeDecaffeinateComments from './rollup-plugin-remove-decaffeinate-comments.ts';
+import removeTestCode from './rollup-plugin-remove-test-code.ts';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -57,13 +57,13 @@ const tsPlugin = typescript({
   });
 
   const bundle = await rollup({
-    input: resolve(__dirname, '../src/main/Main.js'),
+    input: resolve(__dirname, '../src/main/Main.ts'),
     plugins: [
       platform ? platformSpecific({
         platform,
         include: [
           // Only files that actually have platform specific code.
-          "**/src/main/Main.js",
+          "**/src/main/Main.ts",
           "**/src/platform/$.ts",
           "**/src/platform/CrossOrigin.ts",
         ],
@@ -72,9 +72,9 @@ const tsPlugin = typescript({
       buildForTest ? undefined : removeTestCode({
         include: [
           // Only files that actually have test code.
-          "**/src/main/Main.js",
+          "**/src/main/Main.ts",
           "**/src/classes/Post.ts",
-          "**/src/Linkification/Linkify.js",
+          "**/src/Linkification/Linkify.ts",
         ],
         sourceMap: minify,
       }),
@@ -193,7 +193,7 @@ const tsPlugin = typescript({
     });
 
     const eventPage = await rollup({
-      input: resolve(__dirname, '../src/meta/eventPage.js'),
+      input: resolve(__dirname, '../src/meta/eventPage.ts'),
       plugins: [
         tsPlugin,
         noFormat ? undefined : fixTsOutputFormat({ include: ["**/*.ts", "**/*.tsx"] }),
