@@ -9,5 +9,8 @@
       "node"
     ],
   },
+  "include": [
+    "./**/*"
+  ],
   "extends": "../tsconfig.json"
 }

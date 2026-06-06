@@ -132,6 +132,9 @@
     "build:crx": "node ./tools/rollup -platform=crx",
     "build:userscript:min": "node ./tools/rollup -min -platform=userscript",
     "build:crx:min": "node ./tools/rollup -min -platform=crx",
-    "build:all": "node ./tools/rollup -min -platform=userscript && node ./tools/rollup -platform=userscript && node ./tools/rollup -platform=crx"
+    "build:all": "node ./tools/rollup -min -platform=userscript && node ./tools/rollup -platform=userscript && node ./tools/rollup -platform=crx",
+    "typecheck:app": "tsc --project tsconfig.json",
+    "typecheck:tools": "tsc --project tools/tsconfig.json",
+    "typecheck": "npm run typecheck:app && npm run typecheck:tools"
   }
 }

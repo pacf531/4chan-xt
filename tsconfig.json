@@ -30,8 +30,15 @@
       "@fas/*": ["./node_modules/@fortawesome/free-solid-svg-icons/*"],
     },
     "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
   },
+  "include": [
+    "src/**/*"
+  ],
   "exclude": [
-    "builds/"
+    "builds/",
+    "src/meta/fbegin.js",
+    "src/meta/fend.js",
+    "src/meta/newline.js"
   ]
 }
