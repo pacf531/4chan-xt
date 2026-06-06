@@ -1,7 +1,34 @@
-# 4chan XT is dead
+# 4chan XT TypeScript Migration
 
-I stopped using 4chan since the hack. I now browse alt chans that actually care about their users, and don't need an 
-userscript fighting their shitty design.
+This fork is to finish the TypeScript migration for 4chan XT.
+
+All source, tooling, and benchmark files have been renamed to `.ts` or `.tsx`, the build configuration has been updated to resolve TypeScript files, and separate compiler configurations have been added for browser code and Node.js tooling, which is done in the main `project-XT` branch.
+
+Manual typing work will continue on the `project-XT-proper-TS` branch. That branch will progressively remove the remaining `// @ts-nocheck` annotations, resolve type errors, and replace generated or incomplete annotations with maintainable types. This will use AI tooling to do so, which is primarily why that will be the case
+
+Bug fixes, additional imageboard support, and new user-facing features are out of scope for this baseline branch, and will be done in the other branch.
+
+## Migration Status
+
+* **Compiler configuration**: Added separate TypeScript configurations for browser code under `src/` and Node.js tooling under `tools/`.
+* **File conversion**: Renamed all 137 source, tooling, and benchmark files from `.js` to `.ts` or `.tsx`.
+* **Import resolution**: Updated Rollup entry points and explicit imports to resolve TypeScript files.
+* **Generated annotations**: Ran [TypeStat](https://github.com/JoshuaKGoldberg/TypeStat) iteratively to add type annotations gradually over multiple runs across the migrated codebase.
+* **Implicit `any` checks**: Enabled `"noImplicitAny": true` for files that are currently checked by TypeScript to make sure the above annotations done was correct.
+* **Typecheck coverage**: 18 files are now checked by TypeScript. The remaining 119 files temporarily use top-level `// @ts-nocheck` annotations because of typechecking issues with the migration without it.
+* **Build verification**: Confirmed that everything still builds correctly.
+
+## Development Setup
+
+Node.js 24 or newer is required to run the TypeScript tooling directly without an additional transpilation step.
+
+Run the type-checker:
+
+```bash
+npm run typecheck
+```
+
+---
 
 <details>
 <summary>Old readme</summary>

@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Because of increased security in manifest v3, scripts can no longer just inject a script tag into the main page.
  * Functions to be called in the main context must be predefined. Those functions should be in this file, and they will
@@ -226,10 +227,11 @@ const PageContextFunctions = {
   },
 };
 
+// @ts-nocheck
 // This requestId workaround isn't needed in manifest V3, since returning true in the event listener works.
 // But we keep it for manifest V2.
 let requestID = 0;
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   const id = requestID;
   requestID++;
   handlers[request.type](request, sender).then(data => {
@@ -237,23 +239,21 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   });
   sendResponse(id);
 });
-
 var handlers = {
   permission(request) {
     return new Promise(resolve => {
       const origins = request.origins || ['*://*/'];
-      chrome.permissions.contains({origins}, function(result) {
+      chrome.permissions.contains({ origins }, function (result) {
         if (result) {
           resolve(result);
         } else {
-          chrome.permissions.request({origins}, function(result) {
+          chrome.permissions.request({ origins }, function (result) {
             resolve(chrome.runtime.lastError ? false : result);
           });
         }
       });
-    })
+    });
   },
-
   async ajax(request) {
     try {
       const res = await fetch(request.url, { headers: request.headers || {} });
@@ -274,7 +274,6 @@ var handlers = {
       return { error: true };
     }
   },
-
   async runInPageContext(request, sender) {
     const results = await chrome.scripting.executeScript({
       func: PageContextFunctions[request.fn],
@@ -282,6 +281,6 @@ var handlers = {
       target: { tabId: sender.tab.id },
       world: 'MAIN',
     });
-    return results[0].result
+    return results[0].result;
   }
 };
